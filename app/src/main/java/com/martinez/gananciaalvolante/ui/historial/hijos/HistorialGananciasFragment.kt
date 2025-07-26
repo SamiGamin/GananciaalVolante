@@ -2,6 +2,7 @@ package com.martinez.gananciaalvolante.ui.historial.hijos
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -47,7 +48,7 @@ class HistorialGananciasFragment : Fragment(R.layout.fragment_historial_ganancia
             //    porque la acción de navegación está definida a ese nivel.
             val navController = requireParentFragment().requireParentFragment().findNavController()
 
-            // 3. Creamos la acción usando la clase generada por Safe Args y le pasamos el ID.
+            Log.d("DetalleTurno_DEBUG", "Clic en turno con ID: $turnoId. Navegando...")
             val action = HistorialFragmentDirections.actionHistorialFragmentToDetalleTurnoFragment(turnoId)
 
             // 4. Navegamos.

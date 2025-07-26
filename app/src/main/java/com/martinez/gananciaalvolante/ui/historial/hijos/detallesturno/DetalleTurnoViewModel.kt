@@ -1,5 +1,6 @@
 package com.martinez.gananciaalvolante.ui.historial.hijos.detallesturno
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 
 import androidx.lifecycle.SavedStateHandle
@@ -19,9 +20,12 @@ class DetalleTurnoViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle // Hilt inyecta esto automáticamente
 ) : ViewModel() {
 
-    // 1. Obtenemos el 'turnoId' del argumento de navegación de forma segura.
-    // El "!!" es seguro aquí porque le dijimos al nav_graph que este argumento es obligatorio.
+
     private val turnoId: Long = savedStateHandle.get<Long>("turnoId")!!
+    init {
+        Log.d("DetalleTurno_DEBUG", "ViewModel inicializado para turnoId: $turnoId")
+    }
+
 
     // 2. Exponemos los datos como Flows que la UI puede observar.
     // El ViewModel pide al repositorio todos los datos relacionados con ESE turno específico.

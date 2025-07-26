@@ -1,6 +1,7 @@
 package com.martinez.gananciaalvolante.ui.historial.hijos.detallesturno
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,6 +17,7 @@ import com.martinez.gananciaalvolante.ui.historial.util.HistorialItem
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @AndroidEntryPoint
 class DetalleTurnoFragment : Fragment(R.layout.fragment_detalle_turno) {
@@ -58,20 +60,49 @@ class DetalleTurnoFragment : Fragment(R.layout.fragment_detalle_turno) {
                 // Observador para los datos principales del turno
                 launch {
                     viewModel.turno.filterNotNull().collect { turno ->
-                        // Poblar las tarjetas de resumen
+                        // Rellenar Tarjeta 1: Resumen Financiero
                         binding.textViewDetalleGananciaNeta.text = Formatters.toColombianPesos(turno.gananciaNeta)
-                        // ... poblar todos los demás TextViews de las tarjetas
+                        binding.textViewDetalleGananciaBruta.text = Formatters.toColombianPesos(turno.gananciaBruta)
+                        val gastosTotales = turno.gananciaBruta - turno.gananciaNeta
+                        binding.textViewDetalleGastosTotales.text = "- ${Formatters.toColombianPesos(gastosTotales)}"
+                      /*  // Necesitamos el total de ingresos extra para este cálculo
+                        launch {
+                            viewModel.ingresosDelTurno.collect { ingresos ->
+                                val totalIngresosExtra = ingresos.sumOf { it.monto }
+                                binding.textViewDetalleIngresosExtra.text = Formatters.toColombianPesos(totalIngresosExtra)
+
+                                // Gastos = Bruta - Neta (si los ingresos extra se incluyen en bruta)
+                                val gastosTotales = turno.gananciaBruta - turno.gananciaNeta
+                                binding.textViewDetalleGastosTotales.text = "- ${Formatters.toColombianPesos(gastosTotales)}"
+                            }
+                        }*/
+
+                        // Rellenar Tarjeta 2: Métricas de Rendimiento
+                        binding.textViewDetalleGananciaHora.text = Formatters.toColombianPesos(turno.gananciaPorHora)
+                        binding.textViewDetalleCostoKm.text = Formatters.toColombianPesos(turno.costoPorKm)
+                        val gananciaPorKm = if (turno.totalKm > 0) turno.gananciaNeta / turno.totalKm else 0.0
+                        binding.textViewDetalleGananciaKm.text = Formatters.toColombianPesos(gananciaPorKm)
+
+                        // Rellenar Tarjeta 3: Resumen de Actividad
+                        val (tiempoStr, unidadTiempoStr) = Formatters.getFormattedTimeWithUnit(turno.tiempoTotalTrabajadoMs)
+                        binding.textViewDetalleTiempoTurno.text = "$tiempoStr $unidadTiempoStr"
+                        binding.textViewDetalleKmTurno.text = String.format(Locale.getDefault(), "%.1f km", turno.totalKm)/*
+                        launch {
+                            viewModel.recorridosDelTurno.collect { recorridos ->
+                                binding.textViewDetalleNumRecorridos.text = recorridos.size.toString()
+                            }
+                        }*/
                     }
                 }
 
-                // Observador para la lista de recorridos
+                // --- OBSERVADOR PARA LA LISTA DE RECORRIDOS ---
                 launch {
                     viewModel.recorridosDelTurno.collect { listaRecorridos ->
                         recorridosAdapter.submitList(listaRecorridos.map { HistorialItem.RecorridoItem(it) })
                     }
                 }
 
-                // Observador para la lista de gastos
+                // --- OBSERVADOR PARA LA LISTA DE GASTOS ---
                 launch {
                     viewModel.gastosDelTurno.collect { listaGastos ->
                         gastosAdapter.submitList(listaGastos.map { HistorialItem.GastoItem(it) })

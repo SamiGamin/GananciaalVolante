@@ -17,6 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/list_item_gasto" />
+        tools:listitem="@layout/list_item_historial" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
