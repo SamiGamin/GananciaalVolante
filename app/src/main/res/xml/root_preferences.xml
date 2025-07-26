@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory app:title="General">
+
+        <EditTextPreference
+            app:defaultValue="220"
+            app:dialogTitle="Introduce la velocidad máxima"
+            app:key="velocidad_maxima"
+            app:summary="Define el límite máximo que mostrará el dial (ej. 220)."
+            app:title="Velocidad Máxima del Velocímetro"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="km"
+            app:entries="@array/unidades_distancia_entries"
+            app:entryValues="@array/unidades_distancia_values"
+            app:key="unidad_distancia"
+            app:summary="%s"
+            app:title="Unidad de Distancia" />
+        <ListPreference
+            app:key="posicion_menu"
+            app:title="Posición del Menú Flotante"
+            app:summary="%s"
+            app:entries="@array/posicion_menu_entries"
+            app:entryValues="@array/posicion_menu_values"
+            app:defaultValue="izquierda" />
+        <ListPreference
+            app:key="gps_accuracy"
+            app:title="Precisión del seguimiento GPS"
+            app:summary="%s"
+            app:entries="@array/gps_accuracy_entries"
+            app:entryValues="@array/gps_accuracy_values"
+            app:defaultValue="balanced" />
+
+        <SwitchPreferenceCompat
+            app:key="auto_pause_tracking"
+            app:title="Pausa automática"
+            app:summary="Pausa el registro del recorrido si te detienes por más de 3 minutos"
+            app:defaultValue="false" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Vehículo">
+
+        <Preference
+            app:key="edit_vehicle"
+            app:title="Personalizar Vehículo"
+            app:summary="Edita el nombre, marca y modelo de tu vehículo."
+            app:icon="@drawable/ic_directions_car" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Apariencia">
+
+
+        <ListPreference
+            app:key="theme_preference"
+            app:title="Tema de la aplicación"
+            app:summary="%s"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:defaultValue="system"
+            app:icon="@drawable/ic_settings_theme" />
+        <SwitchPreferenceCompat
+            app:key="keep_screen_on"
+            app:title="Mantener pantalla encendida"
+            app:summary="Evita que el dispositivo se bloquee mientras se muestra el velocímetro"
+            app:defaultValue="true" />
+
+        <ListPreference
+            app:key="time_format"
+            app:title="Formato de Hora"
+            app:summary="%s"
+            app:entries="@array/time_format_entries"
+            app:entryValues="@array/time_format_values"
+            app:defaultValue="system" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Legal">
+
+        <!-- Preferencia que abrirá una URL o otro Fragment -->
+        <Preference
+            app:key="terms_conditions"
+            app:title="Términos y Condiciones"
+            app:summary="Lee nuestros términos de servicio."
+            app:icon="@drawable/ic_terms" />
+
+        <!-- Preferencia que abrirá una URL o otro Fragment -->
+        <Preference
+            app:key="privacy_policy"
+            app:title="Política de Privacidad"
+            app:summary="Cómo manejamos tus datos."
+            app:icon="@drawable/ic_privacy" />
+
+        <PreferenceCategory app:title="Sobre Nosotros">
+
+            <Preference
+                app:key="contact_us"
+                app:title="Contáctanos"
+                app:summary="Envíanos tus sugerencias o reporta un error."
+                app:icon="@drawable/ic_email" />
+
+            <Preference
+                app:key="rate_app"
+                app:title="Valora la aplicación"
+                app:summary="Si te gusta la app, déjanos una reseña en la Play Store."
+                app:icon="@drawable/ic_star" />
+            <Preference
+                app:key="app_version"
+                app:title="Versión de la aplicación"
+                app:summary="1.0.0"
+                app:icon="@drawable/ic_info" />
+
+        </PreferenceCategory>
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

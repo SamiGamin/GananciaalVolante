@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
+
+    <View
+        android:id="@+id/scrim_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="#99000000"
+        android:visibility="gone" />
+
+
+    <!-- Ítem de menú: Registrar Gasto -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_home"
+        app:fabSize="normal"
+        app:layout_anchor="@id/fab_global_add"
+        app:layout_anchorGravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
+
+    <!-- Ítem de menú: Registrar Ganancia -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_history"
+        app:fabSize="normal"
+        app:layout_anchor="@id/fab_global_add"
+        app:layout_anchorGravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
+    <!-- Ítem de menú: Registrar Ganancia -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_ganancia1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_attach_money"
+        app:fabSize="normal"
+        app:layout_anchor="@id/fab_global_add"
+        app:layout_anchorGravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
+    <!-- Ítem de menú: Registrar Ganancia -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_gasto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        app:fabSize="normal"
+        app:layout_anchor="@id/fab_global_add"
+        app:layout_anchorGravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
+    <!-- Ítem de menú: Registrar Ganancia -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_ganancia3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_attach_money"
+        app:fabSize="normal"
+        app:layout_anchor="@id/fab_global_add"
+        app:layout_anchorGravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_ganancia4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_attach_money"
+        app:fabSize="normal"
+        app:layout_anchor="@id/fab_global_add"
+        app:layout_anchorGravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_settings"
+        app:fabSize="normal"
+        app:layout_anchor="@id/fab_global_add"
+        app:layout_anchorGravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_global_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|start"
+        android:layout_margin="16dp"
+        android:contentDescription="Añadir nuevo registro"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/md_theme_background" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

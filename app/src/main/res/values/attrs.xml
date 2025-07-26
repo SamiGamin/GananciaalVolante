@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VelocimetroView">
+        <attr name="velocidadMaxima" format="integer" />
+        <attr name="velocidadActual" format="float" />
+        <attr name="colorAguja" format="color" />
+        <attr name="colorDial" format="color" />
+        <attr name="colorMarcas" format="color" />
+        <attr name="colorTexto" format="color" />
+        <attr name="colorTextoNumeros" format="color" /> <!-- Para los números del dial -->
+        <attr name="colorTextoCentral" format="color" /> <!-- Para el número grande de velocidad -->
+        <attr name="grosorDial" format="dimension" />
+        <attr name="grosorAguja" format="dimension" />
+        <attr name="longitudAgujaFactor" format="float" /> <!-- Factor del radio, ej 0.85 -->
+        <attr name="textSizeNumerosDial" format="dimension" />
+        <attr name="textSizeVelocidadCentral" format="dimension" />
+        <!-- Más atributos según necesites -->
+        <attr name="anguloInicioDial" format="float" />
+        <attr name="anguloBarridoDial" format="float" />
+    </declare-styleable>
+    <declare-styleable name="ProgresoCircularView">
+        <attr name="valorProgreso" format="float" />
+        <attr name="valorMaximoProgreso" format="float" />
+        <attr name="colorProgreso" format="color" />
+        <attr name="colorFondoProgreso" format="color" />
+        <attr name="grosorProgreso" format="dimension" />
+        <attr name="textoCentral" format="string" />
+        <attr name="colorTextoProgreso" format="color" />
+        <attr name="textSizeTextoProgreso" format="dimension" />
+    </declare-styleable>
+</resources>

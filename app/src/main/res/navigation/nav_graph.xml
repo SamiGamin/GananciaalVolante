@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment"
+
+    app:enterAnim="@anim/slide_in_right"
+    app:exitAnim="@anim/slide_out_left"
+    app:popEnterAnim="@anim/slide_in_left"
+    app:popExitAnim="@anim/slide_out_right">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.martinez.gananciaalvolante.ui.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+    </fragment>
+    <fragment
+        android:id="@+id/recorridoFragment"
+        android:name="com.martinez.gananciaalvolante.ui.recorridos.recorridoFragment"
+        android:label="fragment_recorrido"
+        tools:layout="@layout/fragment_recorrido" />
+    <fragment
+        android:id="@+id/vehiculoFragment"
+        android:name="com.martinez.gananciaalvolante.ui.vehiculos.vehiculoFragment"
+        android:label="fragment_vehiculo"
+        tools:layout="@layout/fragment_vehiculo" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.martinez.gananciaalvolante.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="" />
+
+
+
+
+    <action android:id="@+id/action_global_to_dashboardFragment"
+        app:destination="@id/dashboardFragment" />
+    <action android:id="@+id/action_global_to_recorridoFragment"
+        app:destination="@id/recorridoFragment"/>
+    <action android:id="@+id/action_global_to_vehiculoFragment"
+        app:destination="@id/vehiculoFragment"/>
+    <action android:id="@+id/action_global_to_settingsFragment"
+        app:destination="@id/settingsFragment"/>
+    <action android:id="@+id/action_global_to_historialFragment"
+        app:destination="@id/historialFragment" />
+    <fragment
+        android:id="@+id/historialFragment"
+        android:name="com.martinez.gananciaalvolante.ui.historial.HistorialFragment"
+        android:label="fragment_historial"
+        tools:layout="@layout/fragment_historial" >
+        <action
+            android:id="@+id/action_historialFragment_to_detalleTurnoFragment"
+            app:destination="@id/detalleTurnoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleTurnoFragment"
+        android:name="com.martinez.gananciaalvolante.ui.historial.hijos.detallesturno.DetalleTurnoFragment"
+        android:label="fragment_detalle_turno"
+        tools:layout="@layout/fragment_detalle_turno" >
+        <argument
+            android:name="turnoId"
+            app:argType="long" />
+    </fragment>
+
+</navigation>
